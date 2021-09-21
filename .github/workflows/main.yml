@@ -27,7 +27,7 @@ jobs:
        - name: clone ?
          continue-on-error: true
          run: |
-           git clone https://Unknown-San:${{ secrets.TOKEN }}@github.com/github.com/Unknown-San/slam-mirrorbot bot && cd bot && pip3 install -r requirements.txt
+           git clone https://Unknown-San:${{ secrets.TOKEN }}@github.com/Unknown-San/slam-mirrorbot bot && cd bot && pip3 install -r requirements.txt
            pwd
        - name: Running
          timeout-minutes: 350
