@@ -1,0 +1,37 @@
+name : leechbot
+
+
+on:
+    schedule:
+      - cron: "0 */6 * * *"
+    push:
+      branches: [ main ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+       - uses: actions/checkout@v2
+       - uses: styfle/cancel-workflow-action@0.9.0
+         name: "Cancel duplicate workflow runs"
+         with:
+            all_but_latest: true
+            access_token: ${{ secrets.TOKEN }}
+       - name: Set up Python 3.9
+         uses: actions/setup-python@v2.2.2
+         with:
+           python-version: 3.9
+
+       
+       - name: clone ?
+         continue-on-error: true
+         run: |
+           git clone https://Unknown-San:${{ secrets.TOKEN }}@github.com/github.com/Unknown-San/slam-mirrorbot bot && cd bot && pip3 install -r requirements.txt
+           pwd
+       - name: Running
+         timeout-minutes: 350
+         continue-on-error: true
+         run: |
+           cd bot
+           python3 -m bot
